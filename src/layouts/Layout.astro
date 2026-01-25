@@ -1,23 +1,42 @@
+---
+import SEO from '../components_other/SEO.astro';
+import Reset_styles from '../global_styles/Reset_styles.astro';
+import Styles from '../global_styles/Styles.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+}
+
+const { title, description, image } = Astro.props;
+---
+
 <!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+<html lang="pl">
+  <head>
+    <SEO title={title} description={description} image={image} />
+    <Reset_styles />
+    <Styles />
+  </head>
+  <body>
+    <slot />
+  </body>
 </html>
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+<script>
+  const skeletons = document.querySelectorAll<HTMLElement>('.skeleton');
+
+  skeletons.forEach((el) => {
+    const stopAnimation = () => el.classList.add('stopImageAnimation');
+
+    if (el instanceof HTMLImageElement) {
+      if (el.complete) {
+        stopAnimation();
+      } else {
+        el.addEventListener('load', stopAnimation);
+        el.addEventListener('error', stopAnimation);
+      }
+    }
+  });
+</script>

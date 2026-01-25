@@ -1,0 +1,84 @@
+---
+import Search_bar from '../components_small/Search_bar.astro';
+import Logo from '../components_small/Logo.astro';
+import Nav_links from '../components_small/Nav_links.astro';
+import Mobile_button from '../components_small/Mobile_button.astro';
+import Mobile_menu from '../components_small/Mobile_menu.astro';
+---
+
+<header id="navHeader">
+  <Logo />
+  <Search_bar />
+  <nav id="desktopNav">
+    <Nav_links />
+  </nav>
+  <nav id="mobileNav">
+    <Mobile_button />
+    <Mobile_menu />
+  </nav>
+</header>
+
+<style>
+  header {
+    width: 100%;
+    height: 3rem;
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    place-items: center;
+  }
+
+  nav {
+    justify-self: end;
+  }
+
+  #mobileNav {
+    display: none;
+  }
+
+  #desktopNav {
+    display: block;
+  }
+
+  @media screen and (max-width: 1024px) {
+    #mobileNav {
+      display: block;
+      position: relative;
+    }
+    #desktopNav {
+      display: none;
+    }
+  }
+  @media screen and (max-width: 600px) {
+    header {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>
+
+<script>
+  // Handle Search Bar visibility toggling
+  const searchBars = document.querySelectorAll('.search_bar');
+  if (searchBars.length >= 2) {
+    const searchBarHeader = searchBars[0];
+    const searchBarMenu = searchBars[1];
+
+    const mediaQuery = window.matchMedia('(max-width:600px)');
+
+    const handleScreenChange = (e: MediaQueryListEvent | MediaQueryList) => {
+      // Cast to HTMLElement to access style
+      const headerEl = searchBarHeader as HTMLElement;
+      const menuEl = searchBarMenu as HTMLElement;
+
+      if (e.matches) {
+        headerEl.classList.add('hide');
+        menuEl.classList.remove('hide');
+      } else {
+        headerEl.classList.remove('hide');
+        menuEl.classList.add('hide');
+      }
+    };
+    handleScreenChange(mediaQuery);
+    mediaQuery.addEventListener('change', handleScreenChange);
+  }
+</script>

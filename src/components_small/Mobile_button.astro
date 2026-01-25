@@ -1,0 +1,82 @@
+<button id="menuButtonMobile" aria-label="Toggle menu">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="48"
+    height="48"
+    viewBox="0 0 24 24"
+    class="openMenu"
+  >
+    <path
+      fill="currentColor"
+      d="M4 18q-.425 0-.712-.288T3 17t.288-.712T4 16h16q.425 0 .713.288T21 17t-.288.713T20 18zm0-5q-.425 0-.712-.288T3 12t.288-.712T4 11h16q.425 0 .713.288T21 12t-.288.713T20 13zm0-5q-.425 0-.712-.288T3 7t.288-.712T4 6h16q.425 0 .713.288T21 7t-.288.713T20 8z"
+    ></path>
+  </svg>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="48"
+    height="48"
+    viewBox="0 0 24 24"
+    class="closeMenu toggle"
+  >
+    <rect width="24" height="24" fill="none"></rect>
+    <path
+      fill="currentColor"
+      d="m12 10.587l4.95-4.95l1.414 1.414l-4.95 4.95l4.95 4.95l-1.415 1.414l-4.95-4.95l-4.949 4.95l-1.414-1.415l4.95-4.95l-4.95-4.95L7.05 5.638z"
+    ></path>
+  </svg>
+</button>
+
+<style>
+  button {
+    display: none;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    height: 3rem;
+    width: 3rem;
+    position: relative;
+    color: var(--secondary-color);
+  }
+
+  button svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: opacity 0.5s ease;
+    will-change: opacity;
+  }
+
+  .toggle {
+    opacity: 0;
+  }
+
+  @media screen and (max-width: 1024px) {
+    button {
+      display: block;
+    }
+  }
+</style>
+
+<script>
+  const openMenu = document.querySelector('.openMenu');
+  const closeMenu = document.querySelector('.closeMenu');
+
+  function toggleClass() {
+    if (openMenu && closeMenu) {
+      openMenu.classList.toggle('toggle');
+      closeMenu.classList.toggle('toggle');
+    }
+  }
+
+  if (openMenu) openMenu.addEventListener('click', toggleClass);
+  if (closeMenu) closeMenu.addEventListener('click', toggleClass);
+
+  const button = document.querySelector('#menuButtonMobile');
+  const mobileMenu = document.querySelector('#mobileMenu');
+
+  if (button && mobileMenu) {
+    button.addEventListener('click', () => {
+      mobileMenu.classList.toggle('showHide');
+    });
+  }
+</script>

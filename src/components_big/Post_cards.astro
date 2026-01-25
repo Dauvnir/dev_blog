@@ -1,0 +1,70 @@
+---
+import Post_card from '../components_small/Post_card.astro';
+---
+
+<main id="blog_section">
+  <h2>Recent posts</h2>
+  <ul>
+    {
+      [1, 2, 3, 4, 5, 6].map((i) => (
+        <Post_card
+          articleTitle={`Sample Post ${i}: Exploring Web Dev`}
+          articleAuthor="Jan Kowal"
+          articleAuthorImage="/woman.png"
+          articleTimestamp="2023-10-15"
+          articleTimeToRead="5 min read"
+          mainImage={{
+            articleMainImage: '/glass.jpg',
+            articleMainImageAltText: 'Abstract glass texture',
+            imageWidth: 600,
+            imageHeight: 400,
+          }}
+          content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        />
+      ))
+    }
+  </ul>
+  <a href="/posts" class="checkForMore">Check all posts</a>
+</main>
+
+<style>
+  main {
+    width: 100%;
+    height: auto;
+
+    margin-block: 4rem;
+
+    & h2 {
+      text-align: center;
+      margin-block: 2rem 4rem;
+    }
+  }
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    list-style: none;
+    max-width: 90rem; /* (20rem x 4) + (2rem x 3 gaps) = 86rem. 90rem gives breathing room */
+    margin-inline: auto;
+  }
+  .checkForMore {
+    display: block;
+    width: fit-content;
+    padding: 1.25rem 1.5rem;
+    margin-top: 5rem;
+    text-align: center;
+    margin-inline: auto;
+    background-color: var(--secondary-color);
+    border-radius: 10px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+  .checkForMore:hover {
+    background-color: white;
+    color: var(--secondary-color);
+    transform: scale(1.05);
+  }
+</style>

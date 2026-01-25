@@ -1,0 +1,123 @@
+---
+interface Props {
+  title?: string;
+  message?: string;
+}
+
+const {
+  title = '404 - Post Not Found',
+  message = "The article you're looking for might have been moved, deleted, or never existed. Don't let your reading journey end here.",
+} = Astro.props;
+---
+
+<section id="error-wrapper">
+  <article class="error-content">
+    <header>
+      <span class="error-code">404</span>
+      <h1>{title}</h1>
+    </header>
+    <p>{message}</p>
+    <nav class="error-nav" aria-label="404 navigation">
+      <a href="/" class="link-primary">Back to Homepage</a>
+      <a href="/" class="link-secondary">Browse Latest Posts</a>
+    </nav>
+  </article>
+</section>
+
+<style>
+  #error-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+    min-height: 60vh;
+    text-align: center;
+  }
+
+  .error-content {
+    max-width: 40rem;
+    width: 100%;
+  }
+
+  .error-code {
+    display: block;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+  }
+
+  p {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: var(--alternative-text-color);
+    margin-bottom: 2.5rem;
+  }
+
+  .error-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .link-primary,
+  .link-secondary {
+    padding: 0.75rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    flex: 1 1 auto; /* Allow growth but respect content */
+    min-width: 140px;
+    max-width: 300px;
+  }
+
+  .link-primary {
+    background-color: var(--secondary-color);
+    color: white;
+  }
+
+  .link-primary:hover {
+    transform: scale(1.05);
+  }
+
+  .link-secondary {
+    border: 1px solid var(--alternative-text-color);
+    color: var(--text-color);
+    background-color: transparent;
+  }
+
+  .link-secondary:hover {
+    border-color: var(--secondary-color);
+    color: var(--secondary-color);
+    transform: scale(1.05);
+  }
+
+  @media (max-width: 640px) {
+    .error-wrapper {
+      min-height: 50vh;
+    }
+
+    .error-nav {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .link-primary,
+    .link-secondary {
+      width: 100%;
+      max-width: none;
+    }
+  }
+</style>

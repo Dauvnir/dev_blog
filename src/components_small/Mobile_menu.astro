@@ -1,0 +1,63 @@
+---
+import Search_bar from './Search_bar.astro';
+import Nav_links from './Nav_links.astro';
+---
+
+<div id="mobileMenu" class="">
+  <Search_bar />
+  <Nav_links />
+</div>
+
+<style>
+  #mobileMenu {
+    display: none;
+  }
+
+  @media screen and (max-width: 1024px) {
+    #mobileMenu {
+      display: block;
+      position: fixed;
+      z-index: 100;
+      margin-top: 7rem;
+      top: 0;
+      right: 0;
+
+      background-color: var(--secondary-color);
+      border-radius: 10px 0 0 10px;
+      padding: 1rem;
+      min-width: 20rem;
+      max-width: 20rem;
+      height: auto;
+      transform: translateX(calc(100% + clamp(1rem, -0.084rem + 4.819vw, 3rem)));
+
+      /* Visibility transition pattern for off-canvas elements */
+      visibility: hidden;
+      transition:
+        transform 0.5s ease,
+        visibility 0s linear 0.5s;
+      will-change: transform;
+    }
+
+    #mobileMenu.showHide {
+      transform: translateX(0);
+      visibility: visible;
+      transition:
+        transform 0.5s ease,
+        visibility 0s linear 0s;
+    }
+
+    /* Target the Nav_links component structure */
+    :global(#mobileMenu ul) {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      width: 100%;
+      padding-left: 0.75rem;
+    }
+
+    :global(#mobileMenu li) {
+      width: 100%;
+      padding-block: 1rem;
+    }
+  }
+</style>

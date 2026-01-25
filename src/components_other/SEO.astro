@@ -1,0 +1,88 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  type?: 'website' | 'article';
+}
+
+const { title, description, image = '/social-share.png', type = 'website' } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
+const socialImageURL = new URL(image, canonicalURL);
+---
+
+<!-- Global Metadata -->
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" href="/favicon.ico" />
+<meta name="generator" content={Astro.generator} />
+
+<!-- Canonical URL -->
+<link rel="canonical" href={canonicalURL} />
+
+<!-- Primary Meta Tags -->
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={type} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={socialImageURL} />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={canonicalURL} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={socialImageURL} />
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Dangrek&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+  rel="stylesheet"
+/>
+
+<!-- Sitemap & Robots -->
+<link rel="sitemap" href="/sitemap-index.xml" />
+<meta name="robots" content="index, follow" />
+
+<!-- JSON-LD Schema -->
+<script
+  type="application/ld+json"
+  set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    name: 'Blog Jan KOwal',
+    image: socialImageURL,
+    '@id': '',
+    url: canonicalURL,
+    telephone: '123123123',
+    priceRange: '',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'ul.Słowackiego 10',
+      addressLocality: 'Warszawa',
+      postalCode: '00-231',
+      addressCountry: 'PL',
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: 55,
+      longitude: 23,
+    },
+    openingHoursSpecification: {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Friday', 'Thursday', 'Wednesday', 'Tuesday', 'Monday'],
+      opens: '08:00',
+      closes: '16:00',
+    },
+    sameAs: 'http://localhost:4321',
+  })}
+/>

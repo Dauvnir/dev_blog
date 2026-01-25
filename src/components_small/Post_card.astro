@@ -1,0 +1,197 @@
+---
+import { Image } from 'astro:assets';
+
+interface ImageShortPost {
+  articleMainImage: string;
+  articleMainImageAltText: string;
+  imageWidth: number;
+  imageHeight: number;
+}
+
+interface Props {
+  articleTitle: string;
+  articleAuthor: string;
+  articleAuthorImage: string;
+  articleTimestamp: string;
+  articleTimeToRead: string;
+  mainImage: ImageShortPost;
+  content: string;
+}
+
+const {
+  articleTitle,
+  articleAuthor,
+  articleAuthorImage,
+  articleTimestamp,
+  articleTimeToRead,
+  mainImage,
+  content,
+} = Astro.props;
+---
+
+<li>
+  <article>
+    <Image
+      src={mainImage.articleMainImage}
+      alt={mainImage.articleMainImageAltText}
+      width={mainImage.imageWidth}
+      height={mainImage.imageHeight}
+      class="skeleton"
+    />
+
+    <div class="card-content">
+      <div class="meta-row">
+        <time datetime={articleTimestamp}>{articleTimestamp}</time>
+        <p>{articleTimeToRead}</p>
+      </div>
+
+      <header>
+        <h3>
+          <a href={`/posts/${articleTitle.toLowerCase().replace(/\s+/g, '-')}`} class="title-link">
+            {articleTitle}
+          </a>
+        </h3>
+      </header>
+
+      <p class="postArticle">
+        {content}
+      </p>
+
+      <footer>
+        <div class="author-info">
+          <Image src={articleAuthorImage} alt={articleAuthor} width={32} height={32} />
+          <p>{articleAuthor}</p>
+        </div>
+
+        <a
+          href={`/posts/${articleTitle.toLowerCase().replace(/\s+/g, '-')}`}
+          aria-label={`Read full post about ${articleTitle}`}>Read more</a
+        >
+      </footer>
+    </div>
+  </article>
+</li>
+
+<style>
+  article {
+    width: 20rem;
+    min-height: 30rem;
+    max-height: 30rem;
+    background-color: color-mix(in srgb, var(--text-color), transparent 85%);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  /* Image at top, full width of card */
+  img {
+    background-color: white;
+    width: 100%;
+    height: 12rem; /* Slighly larger image focus */
+    object-fit: cover;
+    object-position: center;
+    border-radius: 10px 10px 0 0; /* Only top corners rounded */
+  }
+
+  /* Container for text content to manage padding and flex */
+  .card-content {
+    padding: 1rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  /* Meta Row (Date + Time to Read) */
+  .meta-row {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: space-between;
+    time,
+    p {
+      font-size: 12px !important;
+      color: var(--alternative-text-color) !important;
+    }
+  }
+
+  /* Title Link */
+  .title-link {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease;
+  }
+  .title-link:hover {
+    color: var(--secondary-color);
+  }
+
+  header h3 {
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  header h3 a {
+    font-size: inherit;
+  }
+
+  /* Excerpt */
+  .postArticle {
+    color: var(--text-color);
+    font-size: 1rem;
+    overflow-x: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    margin-bottom: auto; /* Pushes footer down */
+    scrollbar-width: none;
+  }
+
+  /* Footer */
+  footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .author-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .author-info img {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    object-fit: cover;
+    border: none; /* Reset main img border */
+  }
+
+  .author-info p {
+    font-size: 12px;
+    color: var(--alternative-text-color);
+    margin: 0;
+  }
+
+  footer a {
+    display: block;
+    padding: 0.5rem 1rem;
+    background-color: var(--secondary-color);
+    border-radius: 8px; /* Slightly softer radius */
+    color: white; /* Assuming white text on secondary color */
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  footer a:hover {
+    background-color: white;
+    color: var(--secondary-color);
+    transform: scale(1.05);
+  }
+</style>

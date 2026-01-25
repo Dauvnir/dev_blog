@@ -1,0 +1,108 @@
+<style is:global>
+  :root {
+    --primary-color: hsl(249, 100%, 7%);
+    --secondary-color: hsl(342, 100%, 50%);
+    --text-color: hsl(342, 40%, 96%);
+    --alternative-text-color: hsl(342, 10%, 70%);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.5;
+    color: var(--text-color);
+  }
+
+  #navHeader,
+  #copyrightsFooter,
+  main,
+  #error-wrapper,
+  #hero_section {
+    grid-column: 1 / -1;
+    padding-inline: clamp(1rem, -0.084rem + 4.819vw, 3rem);
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: inherit;
+    color: var(--text-color);
+    text-wrap: balance;
+  }
+
+  h1 {
+    font-weight: 700;
+    font-size: clamp(3rem, 2.458rem + 2.41vw, 4rem);
+    line-height: 1.1;
+  }
+
+  h2 {
+    font-weight: 600;
+    font-size: clamp(2rem, 1.458rem + 2.41vw, 3rem);
+    line-height: 1.2;
+  }
+
+  h3 {
+    font-weight: 500;
+    font-size: 1.5rem;
+  }
+
+  p,
+  a,
+  time,
+  span {
+    font-size: 1rem; /* 16px */
+    font-weight: 400;
+  }
+
+  .hide {
+    display: none !important;
+  }
+
+  /* Skeleton Loading Effect */
+  /* Use class .skeleton on images or containers while loading */
+  .skeleton {
+    background: linear-gradient(
+      90deg,
+      hsl(0, 0%, 15%) 0%,
+      hsl(0, 0%, 25%) 50%,
+      hsl(0, 0%, 15%) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 4s infinite linear;
+    min-height: 100px; /* ensure visibility if empty */
+  }
+
+  .stopImageAnimation {
+    background: transparent;
+    animation: none !important;
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    .skeleton {
+      animation: none;
+      background: hsl(0, 0%, 20%);
+    }
+  }
+</style>

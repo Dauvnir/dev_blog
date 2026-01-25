@@ -1,0 +1,100 @@
+<section id="hero_section">
+  <h1>
+    Welcome to my
+    <span id="hero_section_header"><strong>WEB</strong></span> dev blog
+  </h1>
+  <p>
+    This blog is my journey thorough web development. <br /> Look below for posts.
+  </p>
+  <a href="#blog_section" aria-label="Browse posts">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="64"
+      height="64"
+      viewBox="0 0 1024 1024"
+      aria-hidden="true"
+    >
+      <path
+        fill="hsl(342, 100%, 50%)"
+        d="M104.704 338.752a64 64 0 0 1 90.496 0l316.8 316.8l316.8-316.8a64 64 0 0 1 90.496 90.496L557.248 791.296a64 64 0 0 1-90.496 0L104.704 429.248a64 64 0 0 1 0-90.496"
+      ></path>
+    </svg>
+  </a>
+</section>
+
+<style>
+  section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 100%;
+  }
+
+  h1 {
+    display: block;
+    height: auto;
+    font-weight: 700;
+  }
+  p {
+    margin-top: 1rem;
+    margin-bottom: 6rem;
+  }
+  h1,
+  p {
+    text-align: center;
+  }
+  #hero_section_header {
+    font-family: 'Dangrek', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: clamp(3.5rem, 2.958rem + 2.41vw, 4.5rem);
+    color: var(--secondary-color);
+  }
+
+  a {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    animation: upDown 2s ease-in-out infinite alternate;
+    will-change: transform;
+    padding: 10px;
+  }
+
+  a svg {
+    display: block;
+  }
+
+  @keyframes upDown {
+    0% {
+      transform: translateY(-2rem);
+    }
+    100% {
+      transform: translateY(0rem);
+    }
+  }
+</style>
+
+<script>
+  const section = document.getElementById('hero_section');
+  const arrow = section?.querySelector('a');
+
+  if (arrow) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            arrow.classList.remove('stopImageAnimation');
+          } else {
+            arrow.classList.add('stopImageAnimation');
+          }
+        });
+      },
+      { threshold: 0.1 },
+    );
+
+    observer.observe(arrow);
+  }
+</script>
