@@ -1,0 +1,237 @@
+---
+import Image from 'astro/components/Image.astro';
+import Glass from '../../public/glass.jpg';
+import Woman from '../../public/woman.png';
+---
+
+<main>
+  <article>
+    <header>
+      <h1>Web hooks and what do not know about them</h1>
+      <div class="datetimeAuthorWrap">
+        <address>
+          Written by: <Image src={Woman} loading="eager" alt="Jan Kowalski" />
+          Jan Kowalski
+        </address>
+        <time datetime="2025-10-21">2025-10-21 • 5 min read</time>
+      </div>
+    </header>
+    <Image src={Glass} loading="eager" alt="Abstract glass artwork" class="imgMain skeleton" />
+    <div class="content">
+      <p class="intro">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. In mattis tristique neque. Sed leo
+        nulla, sollicitudin nec leo at, suscipit convallis velit. Ut sit amet lorem dignissim odio
+        pulvinar ultrices a vel eros. Nullam vel orci at risus vestibulum pharetra eu in dui. Duis
+        posuere, erat ac condimentum sodales, libero massa scelerisque dui, eget ullamcorper velit
+        diam quis nisl. Vestibulum lobortis suscipit ligula ac tempor. Donec a lectus rutrum,
+        molestie elit vel, hendrerit justo. Nullam tristique enim eget quam ullamcorper vulputate.
+        Nunc efficitur mauris magna, volutpat tincidunt elit vehicula eu. Donec sed volutpat mi.
+      </p>
+      <section>
+        <h2>Use Effect hook</h2>
+        <p>
+          Nullam mollis semper magna vel suscipit. Class aptent taciti sociosqu ad litora torquent
+          per conubia nostra, per inceptos himenaeos. Donec viverra ultricies sem id ultricies.
+          Vivamus tortor tellus, luctus aliquam auctor eu, maximus vitae nisi. Morbi hendrerit,
+          massa at posuere iaculis, dolor enim vestibulum est, et consectetur mauris turpis in ex.
+          Nam in hendrerit sem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+          dapibus metus sit amet porta cursus. Vivamus eleifend feugiat ipsum. Aenean congue in erat
+          in interdum. Sed a ultrices dolor, dignissim commodo risus. Pellentesque vel odio dui.
+          Duis pulvinar, purus vitae viverra dapibus, ex odio vehicula neque, et facilisis sapien
+          arcu nec lacus. Aenean sollicitudin at nibh sit amet congue.
+        </p>
+      </section>
+      <section>
+        <h2>Use State hook</h2>
+        <p>
+          Aliquam erat volutpat. Ut eu porttitor erat. Morbi posuere venenatis ipsum et tempor.
+          Phasellus feugiat enim eu tellus posuere tempor. Nulla egestas tempus laoreet. Nulla
+          molestie accumsan hendrerit. Pellentesque rutrum augue et enim tempor euismod. Sed mollis
+          metus massa, sed molestie ex suscipit vel.
+        </p>
+      </section>
+    </div>
+    <footer>
+      <a href="/dummyPost" aria-label="Share on Facebook">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24">
+          <rect width="24" height="24" fill="none"></rect>
+          <path
+            fill="#fff"
+            d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95"
+          ></path>
+        </svg>
+      </a>
+      <a href="/dummyPost" aria-label="Share on Social Media">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24">
+          <rect width="24" height="24" fill="none"></rect>
+          <path
+            fill="#fff"
+            d="M10.75 13.04c0-.57-.47-1.04-1.04-1.04s-1.04.47-1.04 1.04a1.04 1.04 0 1 0 2.08 0m3.34 2.37c-.45.45-1.41.61-2.09.61s-1.64-.16-2.09-.61a.26.26 0 0 0-.38 0a.26.26 0 0 0 0 .38c.71.71 2.07.77 2.47.77s1.76-.06 2.47-.77a.26.26 0 0 0 0-.38c-.1-.1-.27-.1-.38 0m.2-3.41c-.57 0-1.04.47-1.04 1.04s.47 1.04 1.04 1.04s1.04-.47 1.04-1.04S14.87 12 14.29 12"
+          ></path>
+          <path
+            fill="#fff"
+            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2m5.8 11.33c.02.14.03.29.03.44c0 2.24-2.61 4.06-5.83 4.06s-5.83-1.82-5.83-4.06c0-.15.01-.3.03-.44c-.51-.23-.86-.74-.86-1.33a1.455 1.455 0 0 1 2.47-1.05c1.01-.73 2.41-1.19 3.96-1.24l.74-3.49c.01-.07.05-.13.11-.16c.06-.04.13-.05.2-.04l2.42.52a1.04 1.04 0 1 1 .93 1.5c-.56 0-1.01-.44-1.04-.99l-2.17-.46l-.66 3.12c1.53.05 2.9.52 3.9 1.24a1.455 1.455 0 1 1 1.6 2.38"
+          ></path>
+        </svg>
+      </a>
+      <a href="/dummyPost" aria-label="Share on Social Media">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24">
+          <rect width="24" height="24" fill="none"></rect>
+          <path
+            fill="#fff"
+            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2m4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19c-.14.75-.42 1-.68 1.03c-.58.05-1.02-.38-1.58-.75c-.88-.58-1.38-.94-2.23-1.5c-.99-.65-.35-1.01.22-1.59c.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.21-.02c-.09.02-1.49.95-4.22 2.79c-.4.27-.76.41-1.08.4c-.36-.01-1.04-.2-1.55-.37c-.63-.2-1.12-.31-1.08-.66c.02-.18.27-.36.74-.55c2.92-1.27 4.86-2.11 5.83-2.51c2.78-1.16 3.35-1.36 3.73-1.36c.08 0 .27.02.39.12c.1.08.13.19.14.27c-.01.06.01.24 0 .38"
+          ></path>
+        </svg>
+      </a>
+      <a href="/dummyPost" aria-label="Share on X">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 14 14">
+          <rect width="14" height="14" fill="none"></rect>
+          <g fill="none">
+            <g clip-path="url(#SVGG1Ot4cAD)">
+              <path
+                fill="#fff"
+                d="M11.025.656h2.147L8.482 6.03L14 13.344H9.68L6.294 8.909l-3.87 4.435H.275l5.016-5.75L0 .657h4.43L7.486 4.71zm-.755 11.4h1.19L3.78 1.877H2.504z"
+              ></path>
+            </g>
+            <defs>
+              <clipPath id="SVGG1Ot4cAD">
+                <path fill="#fff" d="M0 0h14v14H0z"></path>
+              </clipPath>
+            </defs>
+          </g>
+        </svg>
+      </a>
+      <a href="/dummyPost" aria-label="Share on Instagram">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24">
+          <rect width="24" height="24" fill="none"></rect>
+          <path
+            fill="#fff"
+            d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4zm9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8A1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5a5 5 0 0 1-5 5a5 5 0 0 1-5-5a5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3"
+          ></path>
+        </svg>
+      </a>
+    </footer>
+  </article>
+</main>
+
+<style>
+  article {
+    margin-top: 5rem;
+    width: 100%;
+    max-width: 65rem;
+    display: flex;
+    flex-direction: column;
+    margin-inline: auto;
+  }
+
+  header {
+    margin-bottom: 2.5rem;
+    border-bottom: 1px solid rgba(125, 125, 125, 0.2);
+    padding-bottom: 2.5rem;
+    pointer-events: none;
+  }
+
+  h1 {
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+  }
+
+  .datetimeAuthorWrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.9em;
+    opacity: 0.9;
+  }
+
+  .datetimeAuthorWrap address {
+    display: flex;
+    gap: 0.75rem;
+    font-style: normal;
+    align-items: center;
+    font-weight: 600;
+  }
+
+  .datetimeAuthorWrap img {
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    object-fit: contain;
+    object-position: center;
+    border: 2px solid rgba(125, 125, 125, 0.2);
+  }
+
+  .imgMain {
+    width: 100%;
+    height: auto;
+    max-height: 40rem;
+    object-fit: contain;
+    object-position: center;
+    border-radius: 16px;
+    margin-bottom: 3rem;
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Content Wrapper */
+  .content {
+    max-width: 48rem;
+    margin-inline: auto;
+    width: 100%;
+    pointer-events: none;
+  }
+
+  p {
+    margin-block: 1.5rem;
+    font-size: 20px;
+    line-height: 1.7;
+    opacity: 0.9;
+  }
+
+  .intro {
+    font-weight: 500;
+    opacity: 1;
+    margin-bottom: 3rem;
+  }
+
+  h2 {
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  footer {
+    max-width: 48rem;
+    margin-inline: auto;
+    width: 100%;
+    display: flex;
+    gap: 1.5rem;
+    height: auto;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(125, 125, 125, 0.2);
+  }
+
+  footer a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: inherit;
+    transition: all 0.2s ease;
+  }
+
+  footer a svg:hover {
+    transform: translateY(-2px);
+  }
+
+  footer svg {
+    height: 32px;
+    width: 32px;
+    display: block;
+  }
+</style>

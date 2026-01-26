@@ -3,26 +3,26 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components_big/Header.astro';
 import Footer from '../components_big/Footer.astro';
 import Background from '../components_small/Background.astro';
-import Error_message from '../components_big/404_message.astro';
+import Recent_posts from '../components_big/Recent_posts.astro';
 ---
 
-<Layout title="404" description="404 page not found">
+<Layout title="recentPosts" description="recentPosts">
   <Header />
-  <Error_message />
+  <Recent_posts />
   <Background />
   <Footer />
 </Layout>
 
 <style>
   body {
-    grid-template-rows: [header] 5rem [rest] 1fr [footer] auto;
+    grid-template-rows: [header] 5rem [posts] 1fr [footer] auto;
   }
   #navHeader {
     grid-area: header;
   }
 
-  #error-wrapper {
-    grid-area: rest;
+  #recent_posts {
+    grid-area: posts;
   }
 
   #copyrightsFooter {

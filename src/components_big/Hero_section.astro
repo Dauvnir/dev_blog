@@ -1,12 +1,15 @@
 <section id="hero_section">
-  <h1>
-    Welcome to my
-    <span id="hero_section_header"><strong>WEB</strong></span> dev blog
-  </h1>
-  <p>
-    This blog is my journey thorough web development. <br /> Look below for posts.
-  </p>
-  <a href="#blog_section" aria-label="Browse posts">
+  <div class="content-wrapper">
+    <h1 class="animate-text">
+      Welcome to my
+      <span id="hero_section_header"><strong>WEB</strong></span> dev blog
+    </h1>
+    <p class="animate-text delay-1">
+      This blog is my journey thorough web development. <br /> Look below for posts.
+    </p>
+  </div>
+
+  <a href="#blog_section" aria-label="Browse posts" class="animate-text delay-2">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="64"
@@ -24,77 +27,98 @@
 
 <style>
   section {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+  }
+
+  .content-wrapper {
     position: relative;
-    height: 100%;
+    z-index: 2;
+    text-align: center;
+    padding-inline: 1rem;
   }
 
   h1 {
     display: block;
-    height: auto;
-    font-weight: 700;
+    font-weight: 800;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
+
   p {
-    margin-top: 1rem;
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    line-height: 1.6;
+    margin-inline: auto;
     margin-bottom: 6rem;
+    opacity: 0.9;
   }
-  h1,
-  p {
-    text-align: center;
-  }
+
   #hero_section_header {
     font-family: 'Dangrek', sans-serif;
     font-weight: 400;
     font-style: normal;
-    font-size: clamp(3.5rem, 2.958rem + 2.41vw, 4.5rem);
+    font-size: clamp(3.5rem, 2.958rem + 2.41vw, 5rem);
     color: var(--secondary-color);
+    display: inline-block;
+    transform: rotate(-2deg); /* Playful tilt */
+    margin-inline: 0.2em;
   }
 
   a {
     position: absolute;
-    bottom: 0;
+    bottom: 2rem;
+    z-index: 2;
     display: flex;
     justify-content: center;
-    animation: upDown 2s ease-in-out infinite alternate;
-    will-change: transform;
+    /* Combined animation: entrance + bounce */
+    animation:
+      fadeInUp 1s ease-out 1s backwards,
+      upDown 2s ease-in-out 2s infinite alternate;
+    will-change: transform, opacity;
     padding: 10px;
+    cursor: pointer;
   }
 
   a svg {
     display: block;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+  }
+
+  /* Entrance Animations */
+  .animate-text {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+
+  .delay-1 {
+    animation-delay: 0.3s;
+  }
+  .delay-2 {
+    animation-delay: 1s;
+  } /* For the arrow entrance */
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   @keyframes upDown {
     0% {
-      transform: translateY(-2rem);
+      transform: translateY(-1rem);
     }
     100% {
       transform: translateY(0rem);
     }
   }
 </style>
-
-<script>
-  const section = document.getElementById('hero_section');
-  const arrow = section?.querySelector('a');
-
-  if (arrow) {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            arrow.classList.remove('stopImageAnimation');
-          } else {
-            arrow.classList.add('stopImageAnimation');
-          }
-        });
-      },
-      { threshold: 0.1 },
-    );
-
-    observer.observe(arrow);
-  }
-</script>

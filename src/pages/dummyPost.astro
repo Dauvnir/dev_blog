@@ -3,12 +3,12 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components_big/Header.astro';
 import Footer from '../components_big/Footer.astro';
 import Background from '../components_small/Background.astro';
-import Error_message from '../components_big/404_message.astro';
+import Post from '../components_big/Post.astro';
 ---
 
-<Layout title="404" description="404 page not found">
+<Layout title="dummyPost" description="dummyPost">
   <Header />
-  <Error_message />
+  <Post />
   <Background />
   <Footer />
 </Layout>
@@ -21,7 +21,7 @@ import Error_message from '../components_big/404_message.astro';
     grid-area: header;
   }
 
-  #error-wrapper {
+  #post-wrapper {
     grid-area: rest;
   }
 
