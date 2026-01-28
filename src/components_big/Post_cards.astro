@@ -1,5 +1,7 @@
 ---
 import Post_card from '../components_small/Post_card.astro';
+import woman from '../assets/woman.png';
+import glass from '../assets/glass.jpg';
 ---
 
 <main id="blog_section">
@@ -10,11 +12,11 @@ import Post_card from '../components_small/Post_card.astro';
         <Post_card
           articleTitle={`Sample Post ${i}: Exploring Web Dev`}
           articleAuthor="Jan Kowal"
-          articleAuthorImage="../assets/woman.png"
+          articleAuthorImage={woman}
           articleTimestamp="2023-10-15"
           articleTimeToRead="5 min read"
           mainImage={{
-            articleMainImage: '../assets/glass.jpg',
+            articleMainImage: glass,
             articleMainImageAltText: 'Abstract glass texture',
             imageWidth: 600,
             imageHeight: 400,

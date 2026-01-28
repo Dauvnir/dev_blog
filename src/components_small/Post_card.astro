@@ -1,8 +1,9 @@
 ---
 import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
 
 interface ImageShortPost {
-  articleMainImage: string;
+  articleMainImage: ImageMetadata;
   articleMainImageAltText: string;
   imageWidth: number;
   imageHeight: number;
@@ -11,7 +12,7 @@ interface ImageShortPost {
 interface Props {
   articleTitle: string;
   articleAuthor: string;
-  articleAuthorImage: string;
+  articleAuthorImage: ImageMetadata;
   articleTimestamp: string;
   articleTimeToRead: string;
   mainImage: ImageShortPost;
