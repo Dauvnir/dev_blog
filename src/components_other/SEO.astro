@@ -8,6 +8,14 @@ interface Props {
 
 const { title, description, image = '/social-share.png', type = 'website' } = Astro.props;
 
+import dangrek from '/src/fonts/dangrek-v33-latin-regular.woff2';
+import inter500 from '/src/fonts/inter-v20-latin-500.woff2';
+import inter600 from '/src/fonts/inter-v20-latin-600.woff2';
+import inter700 from '/src/fonts/inter-v20-latin-700.woff2';
+import inter800 from '/src/fonts/inter-v20-latin-800.woff2';
+import inter900 from '/src/fonts/inter-v20-latin-900.woff2';
+import interRegular from '/src/fonts/inter-v20-latin-regular.woff2';
+
 const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
 const socialImageURL = new URL(image, canonicalURL);
 ---
@@ -42,12 +50,13 @@ const socialImageURL = new URL(image, canonicalURL);
 <meta property="twitter:image" content={socialImageURL} />
 
 <!-- Fonts -->
-<!-- <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-  href="https://fonts.googleapis.com/css2?family=Dangrek&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-  rel="stylesheet"
-/> -->
+<link rel="preload" href={dangrek} as="font" type="font/woff2" crossorigin />
+<link rel="preload" href={interRegular} as="font" type="font/woff2" crossorigin />
+<link rel="preload" href={inter500} as="font" type="font/woff2" crossorigin />
+<link rel="preload" href={inter600} as="font" type="font/woff2" crossorigin />
+<link rel="preload" href={inter700} as="font" type="font/woff2" crossorigin />
+<link rel="preload" href={inter800} as="font" type="font/woff2" crossorigin />
+<link rel="preload" href={inter900} as="font" type="font/woff2" crossorigin />
 
 <!-- Sitemap & Robots -->
 <link rel="sitemap" href="/sitemap-index.xml" />

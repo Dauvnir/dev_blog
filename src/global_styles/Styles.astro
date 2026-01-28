@@ -71,28 +71,39 @@
   /* Skeleton Loading Effect */
   /* Use class .skeleton on images or containers while loading */
   .skeleton {
-    background: linear-gradient(
-      90deg,
-      hsl(0, 0%, 15%) 0%,
-      hsl(0, 0%, 25%) 50%,
-      hsl(0, 0%, 15%) 100%
-    );
-    background-size: 200% 100%;
-    animation: shimmer 4s infinite linear;
-    min-height: 100px; /* ensure visibility if empty */
+    background: hsl(0, 0%, 15%);
+    position: relative;
+    overflow: hidden;
+    min-height: 100px;
+  }
+
+  .skeleton::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent 0%, hsl(0, 0%, 25%) 50%, transparent 100%);
+    transform: translateX(-100%);
+    animation: shimmer 2s infinite linear;
+    will-change: transform;
   }
 
   .stopImageAnimation {
-    background: transparent;
     animation: none !important;
+  }
+
+  .stopImageAnimation::after {
+    display: none;
   }
 
   @keyframes shimmer {
     0% {
-      background-position: 200% 0;
+      transform: translateX(-100%);
     }
     100% {
-      background-position: -200% 0;
+      transform: translateX(100%);
     }
   }
 
@@ -100,8 +111,14 @@
     html {
       scroll-behavior: auto;
     }
-    .skeleton {
+    .skeleton,
+    .skeleton::after {
       animation: none;
+    }
+    .skeleton::after {
+      display: none;
+    }
+    .skeleton {
       background: hsl(0, 0%, 20%);
     }
   }
