@@ -2,6 +2,7 @@
 import SEO from '../components_other/SEO.astro';
 import Reset_styles from '../global_styles/Reset_styles.astro';
 import Styles from '../global_styles/Styles.astro';
+import Fonts_import from '../global_styles/Fonts_import.astro';
 
 interface Props {
   title: string;
@@ -16,6 +17,7 @@ const { title, description, image } = Astro.props;
 <html lang="pl">
   <head>
     <SEO title={title} description={description} image={image} />
+    <Fonts_import />
     <Reset_styles />
     <Styles />
   </head>
